@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - let zoos=[{Name_of_the_Zoo:"Satya zoo",Location_of_the_Zoo:"Hyderabad",Number_of_animals_available_in_the_Zoo:"2000"},{Name_of_the_Zoo:"Rakesh zoo",Location_of_the_Zoo:"Bangalore",Number_of_animals_available_in_the_Zoo:"1000"},{Name_of_the_Zoo:"Manoj zoo",Location_of_the_Zoo:"Chennai",Number_of_animals_available_in_the_Zoo:"1500"}]
+    div(class="container-fluid mt-3")
+    div(class="row")
+        each zoo,index in zoos
+            div(class="col-sm-2 bg-success m-1 p-3" onclick=`buy(${index})`) #{zoo.Name_of_the_Zoo} - #{zoo.Location_of_the_Zoo} - #{zoo.Number_of_animals_available_in_the_Zoo}
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }
