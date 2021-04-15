@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='zooForm', action="/resource/resource/zoos/", method="POST")
+    div.form-group
+        label.zooAttr(for='Name_of_the_Zoo') zoo name
+        input#zootype(type='text', name='Name_of_the_Zoo')
+    div.form-group
+        label.zooAttr(for='Location_of_the_Zoo') zoo location
+        input#size(type='text', name='Location_of_the_Zoo')
+    div.form-group
+        label.zooAttr(for='Number_of_animals') Number of animals
+        input#cost(type='number', name='Number_of_animals')
+    input(type="submit")
+
+  script.
+    document.forms['zooForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });

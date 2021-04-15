@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+
+  - let zooid = toShow._id
+  - let Name_of_the_Zoo = toShow.Name_of_the_Zoo
+  - let Location_of_the_Zoo = toShow.Location_of_the_Zoo
+  - let Number_of_animals_available_in_the_Zoo = toShow.Number_of_animals_available_in_the_Zoo
+  div
+    div.row
+      div(class='zooAttr mr-3') zoo ID is:
+      div #{zooid}
+    div.row
+      div(class='zooAttr mr-3') Name_of_the_Zoo:
+      div #{Name_of_the_Zoo}
+    div.row
+      div(class='zooAttr mr-3') Location_of_the_Zoo:
+      div #{Location_of_the_Zoo}
+    div.row
+      div(class='zooAttr mr-3') Number_of_animals:
+      div #{Number_of_animals_available_in_the_Zoo}
+
+
