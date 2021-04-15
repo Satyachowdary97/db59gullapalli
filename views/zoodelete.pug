@@ -1,53 +1,53 @@
 extends layout
 
 block content
-  h1= title
+    h1= title
 
-  if (toShow == null)
-    h2 No instance to delete
-  else
-    - let zooid = toShow._id
-    - let zootype = toShow.Name_of_the_Zoo
-    - let zoocost = toShow.Location_of_the_Zoo
-    - let zoosize = toShow.Number_of_animals_available_in_the_Zoo
-    - let actionid = "/resource/resource/zoos/" + zooid
-    script let actionid = "#{actionid}"
-    div
-      div.row
-        div(class='zooAttr mr-3') zoo ID is:
-        div #{zooid}
-      div.row
-        div(class='zooAttr mr-3') zoo Name  is:
-        div #{zootype}
-      div.row
-        div(class='zooAttr mr-3') zoo Location is:
-        div #{zoosize}
-      div.row
-        div(class='zooAttr mr-3') zoo Number of Animals is:
-        div #{zoocost}
+    if (toShow == null)
+        h2 No instance to delete
+    else
+        - let zooid = toShow._id
+        - let zootype = toShow.Name_of_the_Zoo
+        - let zoocost = toShow.Location_of_the_Zoo
+        - let zoosize = toShow.Number_of_animals_available_in_the_Zoo
+        - let actionid = "/resource/resource/zoos/" + zooid
+        script let actionid = "#{actionid}"
+        div
+            div.row
+                div(class='zooAttr mr-3') zoo ID is:
+                div #{zooid}
+            div.row
+                div(class='zooAttr mr-3') zoo Name  is:
+                div #{zootype}
+            div.row
+                div(class='zooAttr mr-3') zoo Location is:
+                div #{zoosize}
+            div.row
+                div(class='zooAttr mr-3') zoo Number of Animals is:
+                div #{zoocost}
 
-    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
-    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
 
-  script.
-    function cancel() {
-      // Go back to the home page for the zoo collection
-      window.location.href='/zoos'
-    }
-  script.
-    function deleteOnid() {
-      console.log("starting delete")
-      // delete first
-      fetch(actionid, {
-        method: 'DELETE'      // Don't need a body for the delete
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Delete succeded")
-        window.location.href='/zoos'
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Delete failed " + error )
-      });
-    }
+    script.
+        function cancel() {
+            // Go back to the home page for the zoo collection
+            window.location.href='/zoos'
+        }
+    script.
+        function deleteOnid() {
+            console.log("starting delete")
+            // delete first
+            fetch(actionid, {
+                method: 'DELETE'      // Don't need a body for the delete
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Delete succeded")
+                window.location.href='/zoos'
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Delete failed " + error )
+            });
+        }

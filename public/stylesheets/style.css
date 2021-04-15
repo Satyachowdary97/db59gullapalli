@@ -4,10 +4,47 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #ff0000;
 }
 .zooAttr {
-  background-color: aquamarine;
-  width: 120px;
+  background-color: rgb(127, 136, 255);
+  width: 200px;
 }
 
+.zooAttr {
+  background-color: rgb(87, 165, 42);
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+  color: red;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bolder;
+
+}
+#myTitle{
+  color: #12563f;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+.values{
+  margin-right: 2px;
+  margin-bottom: 0;
+  padding: 10px;
+  justify-content:center;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(0, 238, 255, 0.432);
+  border-left: 2px solid rgba(255, 0, 0, 0);
+  background-color: rgba(255, 240, 253, 0.295);
+  border-radius: 1px;
+}
+.spcl{
+    border-top: 2px solid rgb(76, 0, 255);
+    width: 40%;
+}
+.values:hover{
+  background-color: rgb(217, 255, 4);
+  color: black;
+}

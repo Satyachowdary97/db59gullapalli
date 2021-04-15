@@ -3,41 +3,44 @@ extends layout
 block content
   h1= title
 
-  - let zooid = toShow._id
-  - let zootype = toShow.zootype
-  - let zoocost = toShow.cost
-  - let zoosize = toShow.size
-  
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{zooid}
-  - let actionid = "/resource/resource/zoos/" + zooid
-  form(id='zooForm', action= actionid, method="PUT")
-    div.form-group
-        label.zooAttr(for='Name_of_the_Zoo') zoo name
-        input#zootype(type='text', name='Name_of_the_Zoo', value= Name_of_the_Zoo )
-    div.form-group
-        label.zooAttr(for='Location_of_the_Zoo') Location of the Zoo
-        input#size(type='text', name='Location_of_the_Zoo', value= Location_of_the_Zoo )
-    div.form-group
-        label.zooAttr(for='Number_of_animals') Number of animals
-        input#cost(type='number', name='Number_of_animals', value= Number_of_animals )
-    input(type="submit")
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let zooid = toShow._id
+    - let zootype = toShow.zootype
+    - let zoocost = toShow.cost
+    - let zoosize = toShow.size
 
-  script.
-    document.forms['zooForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show user that form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{zooid}
+    - let actionid = "/resource/resource/zoos/" + zooid
+    form(id='zooForm', action= actionid, method="PUT")
+      div.form-group
+        label.zooAttr(for='Name_of_the_Zoo') zoo name
+        input#zootype(type='text' name='Name_of_the_Zoo', value= Name_of_the_Zoo )
+      div.form-group
+        label.zooAttr(for='Location_of_the_Zoo') Location of the Zoo
+        input#size(type='text' name='Location_of_the_Zoo', value= Location_of_the_Zoo )
+      div.form-group
+        label.zooAttr(for='Number_of_animals') Number of animals
+        input#cost(type='number' name='Number_of_animals', value= Number_of_animals )
+      input(type="submit")
+
+    script.
+      document.forms['zooForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+        });
       });
-    });
